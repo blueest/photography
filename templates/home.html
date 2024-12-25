@@ -6,7 +6,7 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="hero-section">
-	<div c;ass="hero-content text-center">
+	<div class="hero-content text-center">
 		<h1 class="gradient-text display-4 mb-4">Capturing Moments, Creating Memories</h1>
 		<p class="lead mb-4">Professional photography services for your special moments</p>
 		<a href="#services" class="btn btn-gradient">Explore Services</a>
@@ -28,7 +28,7 @@
 						{{ journey.date_started|date:"M Y" }} - {{ journey.date_ended|date:"M Y" }}
 					</div>
 					<h2 style="color: whitesmoke">{{ journey.title }}</h2>
-					<p style="color: whitesmoke">{{ journey.description }}</P>
+					<p style="color: whitesmoke">{{ journey.description }}</p>
 				</div>
 			</div>
 		{% endfor %}
@@ -46,7 +46,7 @@
 		{% for photo in photo_gallery %}
 			<div class="gallery-item">
 				<div class="gallery-card">
-					<img class="{{ photo.image.url }}" alt="{{ photo.title }}" class="gallery-img">
+					<img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="gallery-img">
 					<div class="gallery-overlay">
 						<h3 style="color: whitesmoke">{{ photo.title }}</h3>
 						<p style="color: whitesmoke">{{ photo.description }}</p>
@@ -104,7 +104,7 @@
 				<h3 style="color: whitesmoke">{{ service.name }}</h3>
 				<p style="color: whitesmoke">{{ service.description }}</p>
 				<a href="https://wa.me/{{ service.whatsapp_number}}" target="_blank" class="btn btn-whatsapp">
-					<i class="fas fa-whatsapp"></i> Pesan via WhatsApp
+					<i class="fab fa-whatsapp"></i> Pesan via WhatsApp
 				</a>
 			</div>
 		{% endfor %}

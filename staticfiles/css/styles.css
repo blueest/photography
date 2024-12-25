@@ -5,9 +5,8 @@
 	--hover-color: rgba(255, 255, 255, 0.2);
 	--gradient-1: #FF3366;
 	--gradient-2: #FF9933;
-	--footer-bg: #0a0a0a;
+	--footer-bg: rgba(0, 0, 0, 0.7);
 }
-
 /* Body Styles */
 body {
 	background: #121212;
@@ -172,7 +171,7 @@ main {
 }
 
 .footer-card {
-	background: rgba(255, 255, 255, 0.5);
+	background: rgba(255, 255, 255, 0.3);
 	backdrop-filter: blur(10px);
 	border-radius: 15px;
 	padding: 2rem;
@@ -184,6 +183,7 @@ main {
 .footer-card:hover {
 	transform: translateY(-5px);
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	background: rgba(255, 255, 255, 0.4);
 }
 
 .footer-text {
@@ -206,13 +206,13 @@ main {
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.5);
 }
 
 .footer-social-icons a:hover {
 	color: var(--gradient-1);
 	transform: translateY(-3px) rotate(15deg);
-	background: rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.1);
 }
 
 .footer-contact {
@@ -255,7 +255,7 @@ main {
 /* Hero Section */
 .hero-section {
 	height: 80vh;
-	background: linear-gradient(rgba(0,0,0,0.7), rgba0,(0,0,0.7)), url('static/images/hero-bg.jpg');
+	background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0.7)), url("{% static 'images/hero-bg.jpg' %}");
 	background-size: cover;
 	background-position: center;
 	display: flex;
@@ -273,55 +273,63 @@ main {
 
 /* Section Styles */
 .section-padding {
-	padding: 5rem 0;
+    padding: 5rem 0;
 }
 
 .section-header {
-	margin-bottom: 4rem;
+    margin-bottom: 4rem;
 }
 
 .separator {
-	width: 100%;
-	height: 2px;
-	background: rgba(255, 255, 255, 0.1);
-	position: relative;
-	margin: 1rem auto;
-	max-width: 200px;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    margin: 1rem auto;
+    max-width: 200px;
 }
 
 .separator span {
-	position: absolute;
-	height: 100%;
-	width: 50%;
-	background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
-	top: 0;
-	left: 25%;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
+    top: 0;
+    left: 25%;
 }
 
 /* Timeline Styles */
 .timeline {
-	position: relative;
-	max-width: 1200px;
-	margin: 0 auto;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .timeline::after {
-	content: '';
-	position: relative;
-	width: 2px;
-	background: linear-gradient(180deg, var(--gradient-1), var(--gradient-2));
-	top: 0;
-	bottom: 0;
-	left: 50%;
-	margin-left: -1px;
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gradient-1), var(--gradient-2));
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .timeline-item {
-	padding: 10px 40px;
-	position: relative;
-	width: 50%;
-	animation: fadeIn 0.5s eease-out forwards;
-	opacity: 0;
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.timeline-item.left {
+    left: 0;
+}
+
+.timeline-item.right {
+    left: 50%;
 }
 
 .timeline-item::after {
@@ -335,14 +343,6 @@ main {
     z-index: 1;
 }
 
-.timeline-item.left {
-    left: 0;
-}
-
-.timeline-item.right {
-    left: 50%;
-}
-
 .timeline-item.left::after {
     right: -10px;
 }
@@ -353,10 +353,10 @@ main {
 
 .timeline-content {
     padding: 20px;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
 }
 
@@ -365,6 +365,34 @@ main {
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-item {
+        width: 100%;
+    }
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+    }
+    .timeline::after {
+        left: 10px;
+    }
+}
+
+
 
 /* Gallery Styles */
 .gallery-grid {
