@@ -6,7 +6,7 @@
 	  }
 	],
 	"deployments": {
-	  "startCommand": "gunicorn my_project.wsgi:application --bind 0.0.0.0:8000"
+	  "startCommand": "gunicorn photography.wsgi:application --bind 0.0.0.0:$PORT"
 	}
   }
   
