@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="color: whitesmoke">Layanan Kami</h1>
+<ul>
+    {% for service in services %}
+    <li style="color: whitesmoke">{{ service.name }}: {{ service.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

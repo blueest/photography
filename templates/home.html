@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Photography{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+	<div c;ass="hero-content text-center">
+		<h1 class="gradient-text display-4 mb-4">Capturing Moments, Creating Memories</h1>
+		<p class="lead mb-4">Professional photography services for your special moments</p>
+		<a href="#services" class="btn btn-gradient">Explore Services</a>
+	</div>
+</section>
+
+<!-- Career Journey Section -->
+<section id="journey" class="section-padding">
+	<div class="section-header text-center mb-5">
+		<h1 class="gradient-text">Perjalanan Karir</h1>
+		<div class="separator"><span></span></div>
+	</div>
+
+	<div class="timeline">
+		{% for journey in career_journeys %}
+			<div class="timeline-item {% if forloop.counter|divisibleby:2 %}right{% else %}left{% endif %}">
+				<div class="timeline-content">
+					<div class="date">
+						{{ journey.date_started|date:"M Y" }} - {{ journey.date_ended|date:"M Y" }}
+					</div>
+					<h2 style="color: whitesmoke">{{ journey.title }}</h2>
+					<p style="color: whitesmoke">{{ journey.description }}</P>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="section-padding">
+	<div class="section-header text-center mb-5">
+		<h1 class="gradient-text">Galeri Foto</h1>
+		<div class="separator"><span></span></div>
+	</div>
+
+	<div class="gallery-grid">
+		{% for photo in photo_gallery %}
+			<div class="gallery-item">
+				<div class="gallery-card">
+					<img class="{{ photo.image.url }}" alt="{{ photo.title }}" class="gallery-img">
+					<div class="gallery-overlay">
+						<h3 style="color: whitesmoke">{{ photo.title }}</h3>
+						<p style="color: whitesmoke">{{ photo.description }}</p>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="section-padding">
+	<div class="section-header text-center mb-5">
+		<h1 class="gradient-text">Harga Foto</h1>
+		<div class="separator"><span></span></div>
+	</div>
+
+	<div class="pricing-grid">
+		{% for price in photo_prices %}
+			<div class="pricing-card">
+				<div class="pricing-header">
+					<h3 style="color: whitesmoke">{{ price.category }}</h3>
+					<div class="price">
+						<span class="currency">$</span>
+						<span class="amount">{{ price.price }}</span>
+					</div>
+				</div>
+				<div class="pricing-features">
+					<!-- Assuming you might add features later -->
+					<ul>
+						<li><i class="fas fa-check"></i> Feature 1</li>
+						<li><i class="fas fa-check"></i> Feature 2</li>
+						<li><i class="fas fa-check"></i> Feature 3</li>
+					</ul>
+				</div>
+				<a href="#" class="btn btn-gradient w-100">Pilih Paket</a>
+			</div>
+		{% endfor %}
+	</div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="section-padding">
+	<div class="section-header text-center mb-5">
+		<h1 class="gradient-text">Layanan Pemesanan</h1>
+		<div class="separator"><span></span></div>
+	</div>
+
+	<div class="services-grid">
+		{% for service in services %}
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-camera"></i>
+				</div>
+				<h3 style="color: whitesmoke">{{ service.name }}</h3>
+				<p style="color: whitesmoke">{{ service.description }}</p>
+				<a href="https://wa.me/{{ service.whatsapp_number}}" target="_blank" class="btn btn-whatsapp">
+					<i class="fas fa-whatsapp"></i> Pesan via WhatsApp
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}

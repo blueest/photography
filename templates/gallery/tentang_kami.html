@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="color: whitesmoke">Tentang Kami</h1>
+<ul>
+    {% for journey in career_journeys %}
+    <li style="color: whitesmoke">{{ journey.title }} - {{ journey.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="color: whitesmoke">Galeri</h1>
+<ul>
+    {% for photo in photo_gallery %}
+    <li style="color: whitesmoke">{{ photo.title }}: ${{ photo.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

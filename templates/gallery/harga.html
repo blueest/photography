@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="color: whitesmoke">Harga Foto</h1>
+<ul>
+    {% for price in prices %}
+    <li style="color: whitesmoke">{{ price.category }}: ${{ price.price }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
